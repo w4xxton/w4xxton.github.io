@@ -32,3 +32,37 @@ function displayReviews() {
         reviewsList.appendChild(div);
     });
 }
+function consultarEstado() {
+    var numeroCliente = document.getElementById("numeroCliente").value;
+
+    // Aquí debes reemplazar 'datos.xlsx' con la ruta de tu archivo Excel.
+    var archivoExcel = "datos.xlsx";
+    
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        var data = new Uint8Array(e.target.result);
+        var workbook = XLSX.read(data, {type: 'array'});
+        var sheet_name_list = workbook.SheetNames;
+        var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+
+        var encontrado = false;
+        var estado = "";
+
+        for (var i = 0; i < xlData.length; i++) {
+            if (xlData[i]["Número de Cliente"] == numeroCliente) {
+                estado = xlData[i]["Estado de la Unidad"];
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado) {
+            document.getElementById("resultado").innerText = "El estado de la unidad es: " + estado;
+        } else {
+            document.getElementById("resultado").innerText = "Número de cliente no encontrado";
+        }
+    };
+
+    reader.readAsArrayBuffer(archivoExcel);
+}
