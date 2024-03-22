@@ -1,4 +1,5 @@
 function consultarEstatus() {
+            event.preventDefault();
             // Por ahora, solo mostramos un mensaje de ejemplo
             var numeroUsuario = document.getElementById("numeroUsuario").value;
             var statusResultado = document.getElementById("statusResultado");
