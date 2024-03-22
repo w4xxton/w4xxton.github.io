@@ -2,7 +2,7 @@ function consultarEstatus() {
             // Por ahora, solo mostramos un mensaje de ejemplo
             var numeroUsuario = document.getElementById("numeroUsuario").value;
             var statusResultado = document.getElementById("statusResultado");
-            statusResultado.innerHTML = "El estatus de su producto para el usuario " + numeroUsuario + " es: Pendiente de consulta.";
+            statusResultado.innerHTML = "El estatus de su producto para el usuario " + numeroUsuario + " se encuentra en reparacion, tiempo estimado 3 horas.";
         }
 
         // Datos de ejemplo para las reseñas
