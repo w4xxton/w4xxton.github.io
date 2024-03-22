@@ -1,30 +1,30 @@
-let reviews = [];
+function consultarEstatus() {
+            // Por ahora, solo mostramos un mensaje de ejemplo
+            var numeroUsuario = document.getElementById("numeroUsuario").value;
+            var statusResultado = document.getElementById("statusResultado");
+            statusResultado.innerHTML = "El estatus de su producto para el usuario " + numeroUsuario + " es: Pendiente de consulta.";
+        }
 
-// Function to handle form submission for verification
-document.getElementById('verification-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
+        // Datos de ejemplo para las reseñas
+        var reseñasData = [
+            { nombre: "Usuario 1", comentario: "¡Excelente servicio, estoy muy satisfecho!" },
+            { nombre: "Usuario 2", comentario: "El producto llegó en buen estado, pero el envío fue un poco lento." },
+            { nombre: "Usuario 3", comentario: "Me encantó el producto, definitivamente lo recomendaré." }
+        ];
 
-    const clientNumber = document.getElementById('client-number').value;
-    // Here you can add logic to verify the status with the client number
-    // For demo, we'll just display a message
-    const statusResult = document.getElementById('status-result');
-    statusResult.innerHTML = `Estatus para el cliente ${clientNumber}: Pendiente de implementación.`;
-});
+        // Función para mostrar las reseñas
+        function mostrarReseñas() {
+            var reseñasContainer = document.getElementById("reseñas");
+            reseñasData.forEach(function(reseña) {
+                var reviewDiv = document.createElement("div");
+                reviewDiv.classList.add("review");
+                reviewDiv.innerHTML = "<strong>" + reseña.nombre + ":</strong> " + reseña.comentario;
+                reseñasContainer.appendChild(reviewDiv);
+            });
+        }
 
-// Function to handle form submission for review
-document.getElementById('review-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
-    const review = document.getElementById('review').value;
-    reviews.push(review);
-    displayReviews();
-    document.getElementById('review-form').reset(); // Reset form after submission
-});
-
-// Function to display reviews
-function displayReviews() {
-    const reviewsList = document.getElementById('reviews-list');
-    reviewsList.innerHTML = ''; // Clear existing reviews
+        // Llamamos a la función para mostrar las reseñas al cargar la página
+        mostrarReseñas();// Clear existing reviews
     reviews.forEach(function(review, index) {
         const div = document.createElement('div');
         div.classList.add('review');
